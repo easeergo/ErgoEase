@@ -1,3 +1,4 @@
+ErgoEase.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +23,7 @@ body, html {
 
 /* Header */
 .header {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
@@ -36,7 +37,7 @@ body, html {
 }
 
 .logo {
-  height: 60px;
+  height: 63px;
   width: auto;
   object-fit: contain;
 }
@@ -563,11 +564,10 @@ button:disabled {
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
 
-video {
+iframe {
   width: 100%;
   aspect-ratio: 16 / 9;
   border: none;
-  border-radius: 12px;
 }
 
 /* Progress Indicator */
@@ -1209,11 +1209,13 @@ video {
         <h2>Treatment Plan: ${selectedPain} (${selectedLevel} Pain)</h2>
         ${info.symptoms ? `<h3>📋 Symptoms You May Experience</h3><ul>${info.symptoms.map(s => `<li>${s}</li>`).join('')}</ul>` : ''}
         ${info.causes ? `<h3>🔍 Common Causes</h3><ul>${info.causes.map(c => `<li>${c}</li>`).join('')}</ul>` : ''}
+        ${info.posture ? `<h3>💡 Right Posture</h3><ul>${info.tips.map(t => `<li>${t}</li>`).join('')}</ul>` : ''}
         <h3>🎥 Recommended Exercise</h3>
         <div class="video-container">
-          <video src="${info.videoLink}" controls preload="metadata"></video>
+          <iframe src="${info.videoLink}?autoplay=0&mute=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
-        ${info.tips ? `<h3>💡 Additional Tips</h3><ul>${info.tips.map(t => `<li>${t}</li>`).join('')}</ul>` : ''}
+        ${info.instruction ? `<h3>💡 Instruction</h3><ul>${info.instruction.map(t => `<li>${t}</li>`).join('')}</ul>` : ''}
+         ${info.tips ? `<h3>💡 Additional Tips</h3><ul>${info.tips.map(t => `<li>${t}</li>`).join('')}</ul>` : ''}
       `;
 
       contentDiv.appendChild(block);
@@ -1223,7 +1225,7 @@ video {
   const videos = {
     'Lower Back': {
       'Mild': {
-        videoLink: 'videos/Mild-Lowerback.mp4',
+        videoLink: 'videos/LOWER BACK/Mild-Lowerback.mp4',
         symptoms: [
           'Dull, achy pain in lower back area',
           'Mild stiffness, especially in the morning',
@@ -1238,15 +1240,23 @@ video {
           'Prolonged desk work',
           'Lack of regular exercise'
         ],
+        posture: [
+          'Stand with your back lightly touching a wall (if possible).',
+          'Gently press shoulder blades, head, and buttocks toward the wall.',
+          'Maintain natural curves of the spine (do not flatten completely).'
+        ],
+        instruction: [
+          'How to do it: Lie on your back and pull one knee toward your chest, keeping the other leg flat.',
+          'Sets/Reps/Time: Hold 20 to 30 seconds, 2 to 3 repetitions per side daily'
+        ],
         tips: [
           'Take regular breaks from sitting every 30 minutes',
-          'Use proper lifting techniques',
           'Strengthen your core muscles gradually',
           'Apply heat for 15-20 minutes to reduce stiffness'
         ]
       },
       'Moderate': {
-        videoLink: 'videos/Moderate-Lowerback.mp4',
+        videoLink: 'videos/LOWER BACK/Moderate-Lowerback.mp4',
         symptoms: [
           'Persistent aching that limits some activities',
           'Pain radiates to buttocks or upper thighs',
@@ -1261,6 +1271,15 @@ video {
           'Previous injury or trauma',
           'Arthritis or joint inflammation'
         ],
+        posture: [
+          'Stand with your back lightly touching a wall (if possible).',
+          'Gently press shoulder blades, head, and buttocks toward the wall.',
+          'Maintain natural curves of the spine (do not flatten completely).'
+        ],
+        instruction: [
+          'How to do it: Lie on your back, raise one leg, and use a strap to gently stretch the hamstring.',
+          'Sets/Reps/Time: Hold 20 to 30 seconds, 2 to 4 reps per side daily`'
+        ],
         tips: [
           'Consider ergonomic assessment of your workspace',
           'Use ice for acute pain, heat for chronic stiffness',
@@ -1269,7 +1288,7 @@ video {
         ]
       },
       'Severe': {
-        videoLink: 'videos/Severe-Lowerback.mp4',
+        videoLink: 'videos/LOWER BACK/Severe-Lowerback.mp4',
         symptoms: [
           'Constant, sharp, or burning pain',
           'Pain shoots down one or both legs',
@@ -1284,6 +1303,17 @@ video {
           'Severe muscle strain or ligament injury',
           'Chronic conditions like arthritis or fibromyalgia'
         ],
+        posture: [
+          'Stand with your back lightly touching a wall (if possible).',
+          'Gently press shoulder blades, head, and buttocks toward the wall.',
+          'Maintain natural curves of the spine (do not flatten completely).'
+        ],
+        instruction: [
+          'How to do it:  Lie on your stomach, place hands under shoulders, and push your chest upward while keeping hips on the floor.',
+          'Sets : 2 to 3 sets',
+          'Rep : 10 reps',
+          'Time: Once or twice daily'
+        ],
         tips: [
           'Seek immediate medical evaluation',
           'Avoid movements that worsen pain',
@@ -1295,7 +1325,7 @@ video {
 
     'Neck Pain': {
       'Mild': {
-        videoLink: 'videos/Mild-Neck2.mp4',
+        videoLink: 'videos/NECK/Mild-Neck.mp4',
         symptoms: [
           'Stiffness when turning head',
           'Mild aching in neck muscles',
@@ -1308,6 +1338,16 @@ video {
           'Text neck from mobile devices',
           'Stress and muscle tension'
         ],
+        posture: [
+          'Sit or stand upright.',
+          'Keep ears aligned over shoulders, chin slightly tucked (as if making a gentle double chin).',
+          'Eyes look forward, not down.'
+        ],
+        instruction: [
+          'How to do it: Sit or stand tall, shoulders relaxed. Gently pull your chin straight back without tilting your head up or down. Hold briefly, then return to start.',
+          'Sets/Reps/Time: 2 to 3 sets of 10 to 15 reps, 2 to 3 times daily'
+
+        ],
         tips: [
           'Adjust monitor height to eye level',
           'Take frequent breaks from screen time',
@@ -1316,7 +1356,7 @@ video {
         ]
       },
       'Moderate': {
-        videoLink: 'videos/Moderate-Neck2.mp4',
+        videoLink: 'videos/NECK/Moderate-Neck2.mp4',
         symptoms: [
           'Pain limits head movement significantly',
           'Headaches become more frequent',
@@ -1329,6 +1369,15 @@ video {
           'Cervical disc problems',
           'Muscle strain from overuse'
         ],
+        posture: [
+          'Sit or stand upright.',
+          'Keep ears aligned over shoulders, chin slightly tucked (as if making a gentle double chin).',
+          'Eyes look forward, not down.'
+        ],
+        instruction: [
+          'How to do it: Slowly turn your head to one side until you feel a gentle stretch. Return to center and repeat on the other side.',
+          'Sets/Reps/Time: 2 sets of 10 reps each side, once or twice daily'
+        ],
         tips: [
           'Consider ergonomic assessment',
           'Apply ice for acute episodes',
@@ -1337,7 +1386,7 @@ video {
         ]
       },
       'Severe': {
-        videoLink: 'videos/Severe-Neck.mp4',
+        videoLink: 'videos/NECK/Severe-Neck.mp4',
         symptoms: [
           'Severe pain with minimal movement',
           'Numbness or tingling in arms',
@@ -1349,6 +1398,15 @@ video {
           'Nerve compression',
           'Severe muscle strain',
           'Underlying spinal condition'
+        ],
+        posture: [
+          'Sit or stand upright.',
+          'Keep ears aligned over shoulders, chin slightly tucked (as if making a gentle double chin).',
+          'Eyes look forward, not down.'
+        ],
+        instruction: [
+          'How to do it: Place a towel around the back of your neck and hold both ends. Gently pull the towel forward and down to stretch neck muscles.',
+          'Sets/Reps/Time: 2 sets of 8 to 10 reps, hold 5 seconds each'
         ],
         tips: [
           'Seek medical evaluation immediately',
@@ -1362,7 +1420,7 @@ video {
     // 🧠 Headache
     'Headache': {
       'Mild': {
-        videoLink: 'videos/Mild-Head2.mp4',
+        videoLink: 'videos/HEAD/Mild-Head.mp4',
         symptoms: [
           'Dull pressure or tightness around forehead or temples',
           'Mild discomfort but not disabling',
@@ -1374,6 +1432,15 @@ video {
           'Skipping meals',
           'Eye strain from screen use'
         ],
+        posture: [
+          'Sit or stand upright.',
+          'Keep ears aligned over shoulders, chin slightly tucked (as if making a gentle double chin).',
+          'Eyes look forward, not down.'
+        ],
+        instruction: [
+          'How to do it: Slowly tilt your head toward your shoulder until a gentle stretch is felt. Keep shoulders down and relaxed.',
+          'Sets/Reps/Time: Hold 20 to 30 seconds, 2 to 3 times each side daily'
+        ],
         tips: [
           'Drink plenty of water',
           'Take short breaks from screens',
@@ -1382,7 +1449,7 @@ video {
         ]
       },
       'Moderate': {
-        videoLink: 'videos/Moderate-Head.mp4',
+        videoLink: 'videos/HEAD/Moderate-Head.mp4',
         symptoms: [
           'Throbbing or pulsing pain on one side of the head',
           'Increased sensitivity to light or sound',
@@ -1394,6 +1461,15 @@ video {
           'Poor posture and muscle tension',
           'Overuse of caffeine or painkillers'
         ],
+        posture: [
+          'Sit or stand upright.',
+          'Keep ears aligned over shoulders, chin slightly tucked (as if making a gentle double chin).',
+          'Eyes look forward, not down.'
+        ],
+        instruction: [
+          'How to do it: Turn your head gently to the right, then left, keeping your chin level.',
+          'Sets/Reps/Time:  2 sets of 10 to 15 reps per side, once daily'
+        ],
         tips: [
           'Rest in a quiet, dark room',
           'Apply cold compress to forehead',
@@ -1402,7 +1478,7 @@ video {
         ]
       },
       'Severe': {
-        videoLink: 'videos/Severe-Head.mp4',
+        videoLink: 'videos/HEAD/Severe-Head.mp4',
         symptoms: [
           'Severe throbbing or stabbing head pain',
           'Vision disturbances or aura before onset',
@@ -1414,6 +1490,15 @@ video {
           'Neurological conditions',
           'High blood pressure or sinus infection',
           'Head or neck injury'
+        ],
+        posture: [
+          'Sit or stand upright.',
+          'Keep ears aligned over shoulders, chin slightly tucked (as if making a gentle double chin).',
+          'Eyes look forward, not down.'
+        ],
+        instruction: [
+          'How to do it: Turn your head slightly, look down toward your chest, and gently assist the stretch with one hand on top of your head.',
+          'Sets/Reps/Time: Hold 20 to 30 seconds, 2 to 3 repetitions per side daily'
         ],
         tips: [
           'Seek medical attention immediately if pain is sudden or severe',
@@ -1427,7 +1512,7 @@ video {
     // 💪 Shoulder Pain
     'Shoulder Pain': {
       'Mild': {
-        videoLink: 'videos/Mild-Shoulder.mp4',
+        videoLink: 'videos/SHOULDER/Mild-Shoulder.mp4',
         symptoms: [
           'Mild soreness or stiffness in shoulder joint',
           'Discomfort when lifting arm overhead',
@@ -1438,6 +1523,15 @@ video {
           'Sleeping on one side too long',
           'Light strain from repetitive movement'
         ],
+        posture: [
+          'How to do it: Lie on your back and pull one knee toward your chest, keeping the other leg flat.',
+          'Sets/Reps/Time: Hold 20 to 30 seconds, 2 to 3 repetitions per side daily'
+        ],
+        instruction: [
+          'Sit or stand tall with arms at sides.',
+          'Retract shoulder blades (squeeze them gently) and pull shoulders down (no shrugging).',
+          'Maintain neck alignment and avoid excessive arching of the lower back.'
+        ],
         tips: [
           'Do gentle shoulder rolls and stretches',
           'Apply warm compress to loosen muscles',
@@ -1445,7 +1539,7 @@ video {
         ]
       },
       'Moderate': {
-        videoLink: 'videos/Moderate-Shoulder.mp4',
+        videoLink: 'videos/SHOULDER/Moderate-Shoulder.mp4',
         symptoms: [
           'Pain when lifting or rotating arm',
           'Shoulder feels weak or tight',
@@ -1456,6 +1550,15 @@ video {
           'Impingement syndrome',
           'Poor posture and muscle imbalance'
         ],
+        posture: [
+          'Sit or stand tall with arms at sides.',
+          'Retract shoulder blades (squeeze them gently) and pull shoulders down (no shrugging).',
+          'Maintain neck alignment and avoid excessive arching of the lower back.'
+        ],
+        instruction: [
+          'How to do it: Stand with back, head, and arms against a wall. Slowly raise and lower your arms in a “snow angel” motion while keeping contact with the wall.',
+          'Sets/Reps/Time:2 sets of 10 reps, once daily'
+        ],
         tips: [
           'Do light mobility exercises daily',
           'Apply ice after activity',
@@ -1463,7 +1566,7 @@ video {
         ]
       },
       'Severe': {
-        videoLink: 'videos/Severe-Shoulder.mp4',
+        videoLink: 'videos/SHOULDER/Severe-Shoulder.mp4',
         symptoms: [
           'Severe pain even at rest',
           'Inability to lift arm',
@@ -1473,6 +1576,15 @@ video {
           'Rotator cuff tear',
           'Frozen shoulder',
           'Arthritis or dislocation'
+        ],
+        posture: [
+          'Sit or stand tall with arms at sides.',
+          'Retract shoulder blades (squeeze them gently) and pull shoulders down (no shrugging).',
+          'Maintain neck alignment and avoid excessive arching of the lower back.'
+        ],
+        instruction: [
+          'How to do it: Sit upright on a stable chair or bench. Perform shoulder presses or lateral raises with light dumbbells using controlled movement.',
+          'Sets/Reps/Time: 3 sets of 8 to 12 reps, 2 to 3 times weekly'
         ],
         tips: [
           'Seek professional assessment',
@@ -1485,7 +1597,7 @@ video {
     // 🦴 Upper Back
     'Upper Back': {
       'Mild': {
-        videoLink: 'videos/Mild-Upperback.mp4',
+        videoLink: 'videos/UPPER BACK/Mild-Upperback.mp4',
         symptoms: [
           'Mild tightness between shoulder blades',
           'Discomfort after long periods of sitting',
@@ -1496,6 +1608,15 @@ video {
           'Tension from stress',
           'Weak upper back muscles'
         ],
+        posture: [
+          'Stand with your back lightly touching a wall (if possible).',
+          'Gently press shoulder blades, head, and buttocks toward the wall.',
+          'Maintain natural curves of the spine (do not flatten completely).'
+        ],
+        instruction: [
+          'How to do it: Stand tall, reach both arms overhead, and stretch upward. Hold position while breathing deeply.',
+          'Sets/Reps/Time: Hold 20 to 30 seconds, 2 to 3 repetitions per side daily'
+        ],
         tips: [
           'Stretch chest and back muscles',
           'Take posture breaks every hour',
@@ -1503,7 +1624,7 @@ video {
         ]
       },
       'Moderate': {
-        videoLink: 'videos/Moderate-Upperback.mp4',
+        videoLink: 'videos/UPPER BACK/Moderate-Upperback2.mp4',
         symptoms: [
           'Persistent tightness or soreness',
           'Pain radiating to shoulders or neck',
@@ -1514,6 +1635,15 @@ video {
           'Overuse or repetitive motion',
           'Thoracic joint stiffness'
         ],
+        posture: [
+          'Stand with your back lightly touching a wall (if possible).',
+          'Gently press shoulder blades, head, and buttocks toward the wall.',
+          'Maintain natural curves of the spine (do not flatten completely).'
+        ],
+        instruction: [
+          'How to do it:  Sit or stand tall and pull shoulder blades together and down. Hold briefly, then release.',
+          'Sets/Reps/Time:  2 to 3 sets of 15 reps, once or twice daily'
+        ],
         tips: [
           'Incorporate mobility and strengthening exercises',
           'Avoid slouching at desk',
@@ -1521,7 +1651,7 @@ video {
         ]
       },
       'Severe': {
-        videoLink: 'videos/Severe-Upperback.mp4',
+        videoLink: 'videos/UPPER BACK/Severe-Upperback.mp4',
         symptoms: [
           'Sharp pain when breathing deeply or twisting',
           'Severe stiffness and limited motion',
@@ -1531,6 +1661,15 @@ video {
           'Herniated thoracic disc',
           'Severe muscle strain',
           'Nerve compression or spinal issue'
+        ],
+        posture: [
+          'Stand with your back lightly touching a wall (if possible).',
+          'Gently press shoulder blades, head, and buttocks toward the wall.',
+          'Maintain natural curves of the spine (do not flatten completely).'
+        ],
+        instruction: [
+          'How to do it:  Sit upright and rest your upper back along the backrest of a sturdy chair. Slowly arch your spine backward, allowing your shoulders and chest to open.',
+          'Sets/Reps/Time: Hold 20 to 30 seconds, repeat 2 to 3 times daily'
         ],
         tips: [
           'Seek medical evaluation immediately',
@@ -1543,7 +1682,7 @@ video {
     // 🩻 Middle Back
     'Middle Back': {
       'Mild': {
-        videoLink: 'videos/Mild-Middleback.mp4',
+        videoLink: 'videos/MIDDLE BACK/Mild-Middleback.mp4',
         symptoms: [
           'Dull ache around mid-spine area',
           'Mild stiffness after long sitting or standing',
@@ -1554,6 +1693,15 @@ video {
           'Weak mid-back muscles',
           'Prolonged screen use'
         ],
+        posture: [
+          'Stand with your back lightly touching a wall (if possible).',
+          'Gently press shoulder blades, head, and buttocks toward the wall.',
+          'Maintain natural curves of the spine (do not flatten completely).'
+        ],
+        instruction: [
+          'How to do it:  Sit tall, hands behind your head, and gently lean back to open the chest and extend your mid-spine.',
+          'Sets/Reps/Time:  2 sets of 10 reps, once daily'
+        ],
         tips: [
           'Do gentle spinal extension stretches',
           'Use supportive chair or cushion',
@@ -1561,7 +1709,7 @@ video {
         ]
       },
       'Moderate': {
-        videoLink: 'videos/Moderate-Middleback.mp4',
+        videoLink: 'videos/MIDDLE BACK/Moderate-Middleback.mp4',
         symptoms: [
           'Pain increases with twisting or bending',
           'Tightness that limits movement',
@@ -1572,6 +1720,15 @@ video {
           'Thoracic spine stiffness',
           'Poor lifting mechanics'
         ],
+        posture: [
+          'Stand with your back lightly touching a wall (if possible).',
+          'Gently press shoulder blades, head, and buttocks toward the wall.',
+          'Maintain natural curves of the spine (do not flatten completely).'
+        ],
+        instruction: [
+          'How to do it:  On hands and knees, inhale to arch the spine (cow), exhale to round the spine (cat).',
+          'Sets/Reps/Time:  2 to 3 sets of 10 to 15 reps, daily'
+        ],
         tips: [
           'Use heat therapy to relax muscles',
           'Focus on posture correction exercises',
@@ -1579,7 +1736,7 @@ video {
         ]
       },
       'Severe': {
-        videoLink: 'videos/Severe-Middleback.mp4',
+        videoLink: 'videos/MIDDLE BACK/Severe-Middleback.mp4',
         symptoms: [
           'Severe, stabbing mid-back pain',
           'Pain worsens with breathing or movement',
@@ -1589,6 +1746,15 @@ video {
           'Thoracic disc herniation',
           'Severe spinal muscle strain',
           'Nerve or vertebral injury'
+        ],
+        posture: [
+          'Stand with your back lightly touching a wall (if possible).',
+          'Gently press shoulder blades, head, and buttocks toward the wall.',
+          'Maintain natural curves of the spine (do not flatten completely).'
+        ],
+        instruction: [
+          'How to do it: Lie face down, extend arms and legs, and lift both slightly off the ground. Hold briefly, then lower.',
+          'Sets/Reps/Time: 3 sets of 8 to 12 reps, 2 to 3 times weekly'
         ],
         tips: [
           'Seek medical evaluation immediately',
@@ -1605,19 +1771,19 @@ video {
         if (!videos[type]) {
           videos[type] = {
             'Mild': {
-              videoLink: 'videos/default-mild.mp4',
+              videoLink: 'https://www.youtube.com/embed/PiDW__ipYJo?si=NoySaeX3PMhoQP9i',
               symptoms: [`Mild ${type.toLowerCase()} symptoms`],
               causes: [`Common causes of ${type.toLowerCase()}`],
               tips: [`General tips for ${type.toLowerCase()} relief`]
             },
             'Moderate': {
-              videoLink: 'videos/default-moderate.mp4',
+              videoLink: 'https://www.youtube.com/embed/example-moderate',
               symptoms: [`Moderate ${type.toLowerCase()} symptoms`],
               causes: [`Common causes of moderate ${type.toLowerCase()}`],
               tips: [`Tips for moderate ${type.toLowerCase()} management`]
             },
             'Severe': {
-              videoLink: 'videos/default-severe.mp4',
+              videoLink: 'https://www.youtube.com/embed/example-severe',
               symptoms: [`Severe ${type.toLowerCase()} symptoms`],
               causes: [`Serious causes of ${type.toLowerCase()}`],
               tips: [`Seek professional help for severe ${type.toLowerCase()}`]
@@ -1627,7 +1793,7 @@ video {
       });
 
       return (videos[pain] && videos[pain][level]) ? videos[pain][level] : {
-        videoLink: 'videos/default.mp4',
+        videoLink: 'https://www.youtube.com/embed/PiDW__ipYJo?si=NoySaeX3PMhoQP9i',
         symptoms: ['General pain symptoms'],
         causes: ['Various potential causes'],
         tips: ['Consult healthcare provider for proper diagnosis']
